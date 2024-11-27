@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}{{ book.title }} - Библиотека{% endblock %}
+
+{% block content %}
+<h2>{{ book.title }}</h2>
+<p><strong>Описание:</strong> {{ book.description }}</p>
+
+<h3>Отзывы</h3>
+<form method="POST">
+    <label>Ваше имя:</label>
+    <input type="text" name="name" required><br>
+    <label>Ваш комментарий:</label>
+    <textarea name="comment" required></textarea><br>
+    <label>Оценка (1-5):</label>
+    <input type="number" name="stars" min="1" max="5" required><br>
+    <button type="submit">Отправить отзыв</button>
+</form>
+
+<h3>Список отзывов</h3>
+<ul>
+    {% for review in reviews %}
+    <li>
+        <strong>{{ review.name }}</strong> ({{ review.stars }} звезды):<br>
+        {{ review.comment }}
+    </li>
+    {% endfor %}
+</ul>
+
+<a href="{{ url_for('index') }}">Назад к списку книг</a>
+{% endblock %}

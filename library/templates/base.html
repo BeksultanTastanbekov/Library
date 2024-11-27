@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Библиотека{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <!-- Шапка -->
+    <header>
+        <div class="container">
+            <h1><a href="{{ url_for('index') }}">Библиотека</a></h1>
+            <nav>
+                <ul>
+                    <li><a href="{{ url_for('index') }}">Главная</a></li>
+                    <li><a href="#about">О нас</a></li>
+                    <li><a href="#contact">Контакты</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Основной контент -->
+    <main style="background: url('{{ url_for('static', filename='back.jpg') }}') no-repeat center center; background-size: cover; padding: 20px; border-radius: 5px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); color: #333;">
+        <div class="container">
+            {% block content %}{% endblock %}
+        </div>
+    </main>
+    
+
+    <!-- Подвал -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Библиотека. Все права защищены.</p>
+        </div>
+    </footer>
+</body>
+</html>

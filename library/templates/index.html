@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}Главная - Библиотека{% endblock %}
+
+{% block content %}
+    <h2>Список книг</h2>
+
+    <!-- Форма поиска -->
+    <form method="GET" action="{{ url_for('index') }}">
+        <input type="text" name="search" placeholder="Поиск книг..." value="{{ request.args.get('search', '') }}">
+        <button type="submit">Найти</button>
+    </form>
+
+    <ul>
+        {% for book in books %}
+        <li><a href="{{ url_for('book', book_id=book.id) }}">{{ book.title }}</a></li>
+        {% endfor %}
+    </ul>
+{% endblock %}
