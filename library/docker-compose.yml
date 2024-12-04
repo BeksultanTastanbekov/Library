@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    ports:
+      - "80:80"  
+    volumes:
+      - .:/app  
+    environment:
+      FLASK_APP: app.py
+      FLASK_RUN_HOST: 0.0.0.0
+      FLASK_RUN_PORT: 80
+    command: ["gunicorn", "-b", "0.0.0.0:80", "app:app"]  
+    restart: always  

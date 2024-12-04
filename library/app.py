@@ -50,8 +50,6 @@ def book(book_id):
     reviews = Review.query.filter_by(book_id=book.id).all()
     return render_template('book.html', book=book, reviews=reviews)
 
-if __name__ == '__main__':
-    app.run(debug=True)
 
 # Добавление начальных данных
 """
